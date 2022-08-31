@@ -16,14 +16,14 @@ while (True):
     faces = face_cascade.detectMultiScale(gray, scaleFactor = 1.5, minNeighbors=5)
     for(x,y,w,h) in faces:
         
-        print(x,y,w,h)
+        # print(x,y,w,h)
         roi_gray = gray[y:y+h, x:x+w]
         roi_color = frame[y:y+h,x:x+w]
 
         id_, conf = recognizer.predict(roi_gray)
         if conf>=45 and conf<= 85:
             print(id_)
-            
+
         img_item = "my-image.png"
         cv2.imwrite(img_item, roi_gray)
 
